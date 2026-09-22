@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ScamCheck</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section id="welcome-screen" class="screen">
+
+      <div class="shield">✓</div>
+
+      <h1>ScamCheck</h1>
+
+      <p class="tagline">Before you click. Before you pay. Check it.</p>
+
+      <h2>Does something feel off?</h2>
+
+      <p class="intro">
+
+        Answer a few simple questions and ScamCheck will look for
+
+        common warning signs of scams and fraud.
+
+      </p>
+
+      <button id="start-btn">Start Scam Check</button>
+
+      <p class="privacy">
+
+        🔒 No personal information is required.
+
+      </p>
+
+    </section>
+
+    <section id="question-screen" class="screen hidden">
+
+      <p id="progress"></p>
+
+      <h2 id="question"></h2>
+
+      <div class="answer-buttons">
+
+        <button id="yes-btn">Yes</button>
+
+        <button id="no-btn">No</button>
+
+      </div>
+    <button id="back-btn" type="button">← Back</button>  
+
+    </section>
+
+    <section id="result-screen" class="screen hidden">
+
+      <h2>Your ScamCheck Result</h2>
+
+      <div id="risk-result"></div>
+
+      <p id="risk-message"></p>
+
+      <h3>Verify Before You Trust</h3>
+
+      <p>
+
+        Independently check the organization, contact them using
+
+        information you find yourself, and never send money or
+
+        sensitive information because someone is pressuring you.
+
+      </p>
+
+      <button id="restart-btn">Start a New Check</button>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
