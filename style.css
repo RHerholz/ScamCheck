@@ -254,3 +254,26 @@ button:hover {
 
 }
 
+.sam-mascot {
+
+  display: block;
+
+  width: 140px !important;
+
+  max-width: 140px !important;
+
+  height: auto !important;
+
+  margin: 10px auto 15px;
+
+  object-fit: contain;
+
+}
+
+
+
+
+}
+
+
+
