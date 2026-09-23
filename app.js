@@ -137,10 +137,12 @@ function showResult() {
   resultScreen.classList.remove("hidden");
 
   riskResult.className = "";
+  const samMessage = document.getElementById("sam-message");
 
   if (score <= 2) {
 
     riskResult.textContent = "LOW CONCERN";
+   samMessage.textContent = "My sniff test found few warning signs. But stay alert and always verify independently!"; 
 
     riskResult.classList.add("low-risk");
 
@@ -149,7 +151,7 @@ function showResult() {
       "Few common scam warning signs were detected. That does not guarantee the situation is safe. Verify the person or organization independently before sharing money or sensitive information.";
 
   } else if (score <= 4) {
-
+samMessage.textContent = "Hold on! Something doesn't smell right. Verify independently before taking action.";
     riskResult.textContent = "CAUTION";
 
     riskResult.classList.add("medium-risk");
@@ -161,6 +163,7 @@ function showResult() {
   } else {
 
     riskResult.textContent = "HIGH RISK";
+ samMessage.textContent = "STOP! I'm detecting serious warning signs. Do not send money or share personal information. Verify independently!";   
 
     riskResult.classList.add("high-risk");
 
