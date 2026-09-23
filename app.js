@@ -139,6 +139,50 @@ function showResult() {
   riskResult.className = "";
   const samMessage = document.getElementById("sam-message");
 
+const adviceBox = document.getElementById("personalized-advice");
+const adviceList = document.getElementById("advice-list");
+adviceList.replaceChildren();
+
+adviceBox.hidden = true;
+
+const safetyTips = [
+
+  "Unexpected contact: Verify who is contacting you before responding.",
+
+  "Urgency: Never let anyone pressure you into making an immediate decision.",
+
+  "Threats: Contact the organization independently to verify any threats or claims.",
+
+  "Money requests: Never send money without independently verifying the recipient.",
+
+  "Unusual payments: Be suspicious of requests involving gift cards, cryptocurrency or wire transfers.",
+
+  "Personal information: Never share passwords, banking details or other sensitive information with an unverified contact.",
+
+  "Suspicious links: Avoid unknown links, downloads and requests for remote access.",
+
+  "Secrecy: Be cautious if someone tells you not to discuss the situation with family, your bank or the authorities."
+
+];
+
+answerHistory.forEach((answer, index) => {
+
+  if (answer === true) {
+
+    const item = document.createElement("li");
+
+    item.textContent = safetyTips[index];
+
+    adviceList.appendChild(item);
+
+    adviceBox.hidden = false;
+
+  }
+
+});
+
+
+
   if (score <= 2) {
 
     riskResult.textContent = "LOW CONCERN";
