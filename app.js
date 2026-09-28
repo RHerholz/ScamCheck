@@ -182,8 +182,18 @@ answerHistory.forEach((answer, index) => {
 });
 
 
+const warningWeights = [1, 2, 3, 3, 4, 4, 4, 3];
 
-  if (score <= 2) {
+const weightedScore = answerHistory.reduce(
+
+  (total, answer, index) =>
+
+    total + (answer ? warningWeights[index] : 0),
+
+  0
+
+);
+  if (weightedScore <= 1) {
 
     riskResult.textContent = "LOW CONCERN";
    samMessage.textContent = "My sniff test found few warning signs. But stay alert and always verify independently!"; 
@@ -194,7 +204,7 @@ answerHistory.forEach((answer, index) => {
 
       "Few common scam warning signs were detected. That does not guarantee the situation is safe. Verify the person or organization independently before sharing money or sensitive information.";
 
-  } else if (score <= 4) {
+  } else if (weightedScore <= 4) {
 samMessage.textContent = "Hold on! Something doesn't smell right. Verify independently before taking action.";
     riskResult.textContent = "CAUTION";
 
@@ -202,7 +212,9 @@ samMessage.textContent = "Hold on! Something doesn't smell right. Verify indepen
 
     riskMessage.textContent =
 
-      "Several common scam warning signs were detected. Do not send money or sensitive information until you have independently verified the person or organization.";
+    "One or more scam warning signs were detected. Do not send money or sensitive information until you have independently verified the person or organization.";
+
+
 
   } else {
 
