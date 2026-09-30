@@ -42,7 +42,15 @@ const backBtn = document.getElementById("back-btn");
 
 
 const restartBtn = document.getElementById("restart-btn");
+const analyzeBtn = document.getElementById("analyze-btn");
 
+const analyzeScreen = document.getElementById("analyze-screen");
+
+const analyzeBackBtn = document.getElementById("analyze-back-btn");
+
+const scanMessageBtn = document.getElementById("scan-message-btn");
+
+const messageInput = document.getElementById("message-input");
 const questionText = document.getElementById("question");
 
 const progressText = document.getElementById("progress");
@@ -52,6 +60,11 @@ const riskResult = document.getElementById("risk-result");
 const riskMessage = document.getElementById("risk-message");
 
 startBtn.addEventListener("click", startCheck);
+analyzeBtn.addEventListener("click", startAnalysis);
+
+analyzeBackBtn.addEventListener("click", closeAnalysis);
+scanMessageBtn.addEventListener("click", analyzeMessage);
+
 
 yesBtn.addEventListener("click", () => answerQuestion(true));
 
@@ -60,6 +73,254 @@ noBtn.addEventListener("click", () => answerQuestion(false));
 backBtn.addEventListener("click", goBack);
 
 restartBtn.addEventListener("click", restartCheck);
+function startAnalysis() {
+
+  welcomeScreen.classList.add("hidden");
+
+  analyzeScreen.classList.remove("hidden");
+
+  messageInput.value = "";
+
+}
+
+function closeAnalysis() {
+
+  analyzeScreen.classList.add("hidden");
+
+  welcomeScreen.classList.remove("hidden");
+
+}
+function analyzeMessage() {
+
+  const message = messageInput.value.trim();
+
+  if (!message) {
+  
+    alert("Paste a message first so Sam has something to sniff.");
+
+    return;
+
+  }
+
+  const text = message.toLowerCase();
+
+  const rules = [
+
+    {
+
+      weight: 2,
+
+      tip: "Urgency: Slow down. Do not let anyone pressure you into making an immediate decision.",
+
+      patterns: [
+
+        /\burgent\b/,
+
+        /\bimmediately\b/,
+
+        /\bact now\b/,
+
+        /\bfinal warning\b/
+
+      ]
+
+    },
+
+    {
+
+      weight: 3,
+
+      tip: "Threats: Contact the organization independently to verify threats or serious consequences.",
+
+      patterns: [
+
+        /\barrest\b/,
+
+        /\bwarrant\b/,
+
+        /\blegal action\b/,
+
+        /\baccount (closed|suspended|locked)\b/
+
+      ]
+
+    },
+
+    {
+
+      weight: 4,
+
+      tip: "Unusual payments: Be suspicious of requests involving gift cards, cryptocurrency or wire transfers.",
+
+      patterns: [
+
+        /\bgift card/,
+
+        /\bbitcoin\b/,
+
+        /\bcrypto/,
+
+        /\bwire transfer/
+
+      ]
+
+    },
+
+    {
+
+      weight: 4,
+
+      tip: "Personal information: Never share passwords, banking details, your SIN, PIN or verification codes.",
+
+      patterns: [
+
+        /\bpassword/,
+
+        /\bbanking (information|details)\b/,
+
+        /\bsocial insurance number\b/,
+
+        /\bverification code\b/,
+
+        /\bpin\b/
+
+      ]
+
+    },
+
+    {
+
+      weight: 3,
+
+      tip: "Links and remote access: Avoid suspicious links, downloads, QR codes and requests for remote access.",
+
+      patterns: [
+
+        /\bclick (this|the) link\b/,
+
+        /\bscan (this|the) qr\b/,
+
+        /\bremote access\b/,
+
+        /\banydesk\b/,
+
+        /\bteamviewer\b/
+
+      ]
+
+    },
+
+    {
+
+      weight: 3,
+
+      tip: "Secrecy: Be cautious if someone tells you not to discuss the situation with other people.",
+
+      patterns: [
+
+        /\bdon't tell\b/,
+
+        /\bdo not tell\b/,
+
+        /\bkeep this (a )?secret\b/,
+
+        /\bdon't discuss\b/
+
+      ]
+
+    }
+
+  ];
+
+  const matches = rules.filter(rule =>
+
+    rule.patterns.some(pattern => pattern.test(text))
+
+  );
+
+  const messageScore = matches.reduce(
+
+    (total, rule) => total + rule.weight,
+
+    0
+
+  );
+
+  const samMessage = document.getElementById("sam-message");
+
+  const adviceBox = document.getElementById("personalized-advice");
+
+  const adviceList = document.getElementById("advice-list");
+
+  riskResult.className = "";
+
+  adviceList.replaceChildren();
+
+  matches.forEach(rule => {
+
+    const item = document.createElement("li");
+
+    item.textContent = rule.tip;
+
+    adviceList.appendChild(item);
+
+  });
+
+  adviceBox.hidden = matches.length === 0;
+
+  if (messageScore >= 7) {
+
+    riskResult.textContent = "HIGH RISK";
+
+    riskResult.classList.add("high-risk");
+
+    samMessage.textContent =
+
+      "STOP! Sam detected several serious scam warning signs.";
+
+    riskMessage.textContent =
+
+      "This message contains multiple patterns commonly associated with scams. Do not send money, share sensitive information, click suspicious links, or provide remote access.";
+
+  } else if (messageScore >= 2) {
+
+    riskResult.textContent = "CAUTION";
+
+    riskResult.classList.add("medium-risk");
+
+    samMessage.textContent =
+
+      "Hold on! Sam found one or more warning signs worth checking.";
+
+    riskMessage.textContent =
+
+      "Verify the sender or organization independently before taking action, sending money, or sharing information.";
+
+  } else {
+
+    riskResult.textContent = "LOW CONCERN";
+
+    riskResult.classList.add("low-risk");
+
+    samMessage.textContent =
+
+      "Sam did not detect common scam language, but stay alert.";
+
+    riskMessage.textContent =
+
+      "An automated scan cannot guarantee a message is safe. Verify the sender independently if anything feels unusual.";
+
+  }
+
+  analyzeScreen.classList.add("hidden");
+
+  questionScreen.classList.add("hidden");
+
+  resultScreen.classList.remove("hidden");
+
+}
+
+
 
 function startCheck() {
 

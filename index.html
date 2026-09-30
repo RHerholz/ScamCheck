@@ -42,6 +42,7 @@
 
       <button id="start-btn">Start Scam Check</button>
 
+     <button id="analyze-btn">Analyze a Message</button> 
       <p class="privacy">
 
         🔒 No personal information is required.
@@ -49,7 +50,37 @@
       </p>
 
     </section>
+<section id="analyze-screen" class="screen hidden">
 
+  <h2>Analyze a Message</h2>
+
+  <p>
+
+    Paste the suspicious message below and Sam will look for common scam warning signs.
+
+  </p>
+
+  <textarea
+
+    id="message-input"
+
+    rows="10"
+
+    placeholder="Paste the suspicious email, text, job offer, or message here..."
+
+  ></textarea>
+
+  <p class="privacy">
+
+    🔒 Do not include passwords, banking numbers, your SIN, or other sensitive information.
+
+  </p>
+
+  <button id="scan-message-btn">Let Sam Sniff It Out</button>
+
+  <button id="analyze-back-btn" type="button">← Back</button>
+
+</section>
     <section id="question-screen" class="screen hidden">
 
       <p id="progress"></p>
