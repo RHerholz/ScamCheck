@@ -106,6 +106,101 @@ function analyzeMessage() {
 
   const rules = [
 
+   {
+
+  weight: 4,
+
+  tip: "CRA or tax threats: Contact the CRA directly using official contact information. Do not use links or phone numbers supplied in the message.",
+
+  patterns: [
+
+    /\b(cra|canada revenue agency).{0,40}\b(owe|owing|debt|arrest|warrant|payment|pay now)\b/,
+
+    /\b(tax|taxes).{0,30}\b(arrest|warrant|gift card|bitcoin|crypto)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 2,
+
+  tip: "Package delivery: Verify delivery problems directly through the courier's official website or app.",
+
+  patterns: [
+
+    /\b(package|parcel|delivery).{0,35}\b(fee|payment|required|failed|held|reschedule)\b/,
+
+    /\bdelivery fee\b/
+
+  ]
+
+},
+
+{
+
+  weight: 3,
+
+  tip: "Bank alert: Contact your bank using the number on your card or its official website. Do not use links in the message.",
+
+  patterns: [
+
+    /\b(account|card).{0,35}\b(suspended|locked|compromised|unauthorized|fraud)\b/,
+
+    /\bverify.{0,20}\b(account|identity|banking)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 3,
+
+  tip: "Job offer: Be cautious of jobs that require upfront payments, unusual purchases, or transferring money.",
+
+  patterns: [
+
+    /\bjob offer\b.{0,40}\b(crypto|gift card|cheque|check|equipment|upfront|fee)\b/,
+
+    /\b(work from home|remote job).{0,40}\b(easy money|no experience|daily pay)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 3,
+
+  tip: "Prize or lottery: Legitimate prizes generally do not require you to pay a fee to collect winnings.",
+
+  patterns: [
+
+    /\b(winner|won|prize|lottery|sweepstakes).{0,40}\b(fee|tax|claim|payment)\b/,
+
+    /\bcongratulations.{0,30}\b(won|winner|prize)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 3,
+
+  tip: "Refund scam: Verify unexpected refunds directly with the company or bank before returning any money.",
+
+  patterns: [
+
+    /\brefund.{0,40}\b(overpaid|accident|mistake|send back|return the money)\b/,
+
+    /\bwe (overpaid|refunded too much)\b/
+
+  ]
+
+},
     {
 
       weight: 2,
@@ -182,7 +277,14 @@ function analyzeMessage() {
 
         /\bverification code\b/,
 
-        /\bpin\b/
+        /\bpin\b/ ,
+/\bone[- ]time (code|password|passcode)\b/,
+
+/\botp\b/,
+
+/\bsecurity code\b/
+
+
 
       ]
 
@@ -194,8 +296,7 @@ function analyzeMessage() {
 
       tip: "Links and remote access: Avoid suspicious links, downloads, QR codes and requests for remote access.",
 
-      patterns: [
-
+      patterns: [ 
         /\bclick (this|the) link\b/,
 
         /\bscan (this|the) qr\b/,
