@@ -272,6 +272,31 @@ button:hover {
 
 
 
+#message-input {
+
+  width: 100%;
+
+  min-height: 180px;
+
+  box-sizing: border-box;
+
+  padding: 14px;
+
+  margin: 12px 0 18px;
+
+  border: 1px solid #cfd8dc;
+
+  border-radius: 12px;
+
+  font: inherit;
+
+  line-height: 1.4;
+
+  resize: vertical;
+
+}
+
+
 
 
 
