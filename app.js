@@ -217,6 +217,23 @@ function analyzeMessage() {
   ]
 
 },
+{
+
+  weight: 3,
+
+  tip: "Romance scam: Be cautious when someone you met online develops a relationship quickly and then asks for money, gift cards, cryptocurrency, or financial help.",
+
+  patterns: [
+
+    /\b(love|relationship|romance|dating).{0,80}\b(send|need|help|loan|money|gift card|crypto)\b/,
+
+    /\b(met online|online dating).{0,80}\b(money|financial help|emergency|gift card|crypto)\b/,
+
+    /\b(love you|my love|sweetheart).{0,80}\b(send money|need money|financial help)\b/
+
+  ]
+
+},
     {
 
       weight: 2,
