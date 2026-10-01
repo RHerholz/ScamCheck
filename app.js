@@ -169,7 +169,23 @@ function analyzeMessage() {
   ]
 
 },
+{
 
+  weight: 4,
+
+  tip: "Fake cheque or overpayment: Do not deposit a cheque and then send part of the money elsewhere. The cheque may later be reversed, leaving you responsible for the loss.",
+
+  patterns: [
+
+    /\b(cheque|check).{0,60}\b(deposit|cash).{0,60}\b(send|transfer|return).{0,40}\b(money|funds|remainder|remaining)\b/,
+
+    /\b(overpayment|overpaid).{0,50}\b(send back|return|refund|transfer)\b/,
+
+    /\bpurchase equipment.{0,60}\b(send|return|transfer).{0,40}\b(money|funds|remaining)\b/
+
+  ]
+
+},
 {
 
   weight: 3,
