@@ -360,6 +360,25 @@ function analyzeMessage() {
   ]
 
 },
+{
+
+  weight: 4,
+
+  tip: "Impersonation scam: Verify unexpected requests from banks, government agencies, police, employers, or family members using contact information you trust.",
+
+  patterns: [
+
+    /\b(bank|police|government|cra|canada revenue agency|boss|ceo|family member|grandchild).{0,100}\b(send|transfer|pay|gift card|verification code|urgent|immediately)\b/,
+
+    /\b(your boss|your bank|police|cra|government).{0,100}\b(send|pay|transfer|code|verify)\b/
+
+  ]
+
+},
+
+
+
+
     {
 
       weight: 3,
