@@ -311,6 +311,24 @@ function analyzeMessage() {
 
 },
 
+{
+
+  weight: 4,
+
+  tip: "Insurance scam: Verify policy cancellation, renewal, or payment requests directly with your insurer using contact information you find yourself.",
+
+  patterns: [
+
+    /\b(insurance|insurer|policy|coverage|premium).{0,100}\b(cancelled|canceled|suspended|expired|renew immediately|payment failed)\b/,
+
+    /\b(policy|insurance|coverage).{0,100}\b(click|link|pay now|urgent|immediately)\b/,
+
+    /\b(insurance|premium).{0,100}\b(gift card|crypto|bitcoin|wire transfer|e-transfer)\b/
+
+  ]
+
+},
+
 
     {
 
