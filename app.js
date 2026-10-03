@@ -293,6 +293,24 @@ function analyzeMessage() {
       ]
 
     },
+{
+
+  weight: 4,
+
+  tip: "Investment scam: Be wary of guaranteed profits, unusually high returns, or pressure to invest quickly. Verify the investment and the person offering it independently before sending money.",
+
+  patterns: [
+
+    /\b(guaranteed|risk[- ]?free).{0,80}\b(profit|return|investment|crypto|bitcoin)\b/,
+
+    /\b(invest|investment|crypto|bitcoin).{0,80}\b(double your money|huge returns|high returns|guaranteed returns)\b/,
+
+    /\b(exclusive investment|investment opportunity).{0,80}\b(act now|limited time|send|transfer|deposit)\b/
+
+  ]
+
+},
+
 
     {
 
