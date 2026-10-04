@@ -332,6 +332,22 @@ function analyzeMessage() {
 
     {
 
+  weight: 4,
+
+  tip: "Ghost broker scam: Be cautious of unusually cheap insurance offered by an unverifiable broker. Confirm the broker and policy directly with the insurer before paying.",
+
+  patterns: [
+
+    /\b(insurance|auto insurance|car insurance|home insurance).{0,100}\b(cheap|cheapest|discount|special rate|low rate)\b/,
+
+    /\b(broker|insurance agent).{0,100}\b(e-transfer|cash|personal account|pay first|deposit)\b/,
+
+    /\b(policy|coverage).{0,100}\b(send payment|pay deposit|before documents|before policy)\b/
+
+  ]
+
+},{
+
       weight: 4,
 
       tip: "Personal information: Never share passwords, banking details, your SIN, PIN or verification codes.",
