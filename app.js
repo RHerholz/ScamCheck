@@ -329,6 +329,24 @@ function analyzeMessage() {
 
 },
 
+{
+
+  weight: 4,
+
+  tip: "Insurance claims scam: Verify unexpected claims or adjuster requests directly with your insurer. Never pay a fee or provide banking details, passwords, PINs, or verification codes to release a claim.",
+
+  patterns: [
+
+    /\b(claim|insurance claim|claims department|adjuster).{0,100}\b(fee|payment|pay|deposit|processing fee)\b/,
+
+    /\b(claim|adjuster|claims representative).{0,100}\b(banking|bank details|password|pin|verification code)\b/,
+
+    /\b(claim approved|claim payment|settlement).{0,100}\b(pay fee|send money|release funds|processing fee)\b/
+
+  ]
+
+},
+
 
     {
 
