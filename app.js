@@ -101,10 +101,45 @@ function analyzeMessage() {
     return;
 
   }
-
   const text = message.toLowerCase();
 
   const rules = [
+{
+
+  weight: 4,
+
+  tip: "Postal or courier scam: Verify unexpected parcel fees directly through the courier's official website or app. Do not use links supplied in the message.",
+
+  patterns: [
+
+    /\b(canada post|parcel|package|delivery|courier).{0,120}\b(on hold|held|border fee|customs fee|delivery fee|redelivery fee|payment required)\b/,
+
+    /\b(parcel|package|delivery).{0,120}\b(pay|fee|required today|required tomorrow|due today|due tomorrow)\b/,
+
+    /\b(canada post|parcel|package|delivery).{0,120}\b(click here|follow this link|http|https|www\.)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 3,
+
+  tip: "Suspicious link: Be cautious of shortened or unfamiliar web links. Visit the organization's official website yourself instead of using a link supplied in the message.",
+
+  patterns: [
+
+    /\b(bit\.ly|tinyurl\.com|t\.co|ow\.ly|is\.gd|cutt\.ly|rebrand\.ly|fyn\.is)\/\S+/,
+
+    /\b[a-z0-9-]+\.(com|ca|net|org|co|io|is|ly|me|info)\/[a-z0-9_-]{3,}\b/,
+
+    /\b(click|tap|visit|open|here).{0,60}\b(link|website|url)\b/
+
+  ]
+
+},
+
 
    {
 
