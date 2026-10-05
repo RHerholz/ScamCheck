@@ -347,7 +347,15 @@ function analyzeMessage() {
 
 },
 
-
+{
+  weight: 4,
+  tip: "Life insurance scam: Verify unexpected beneficiary, death benefit, or unclaimed policy notices directly with the insurer. Never pay a fee to release insurance proceeds.",
+  patterns: [
+    /\b(life insurance|beneficiary|death benefit|unclaimed life insurance|unclaimed policy).{0,220}\b(fee|administration fee|processing fee|payment|pay|e-transfer|transfer)\b/,
+    /\b(unclaimed life insurance|unclaimed policy|beneficiary).{0,220}\b(receive|collect|claim|death benefit|insurance payout)\b/,
+    /\b(death benefit|insurance payout|beneficiary).{0,180}\b(must first pay|pay first|administration fee|processing fee|send money|e-transfer)\b/
+  ]
+},
     {
 
   weight: 4,
