@@ -121,6 +121,24 @@ function analyzeMessage() {
   ]
 
 },
+{
+
+  weight: 4,
+
+  tip: "Bank security scam: Verify unexpected account alerts directly through your bank's official app, website, or phone number. Never use a link supplied in the message.",
+
+  patterns: [
+
+    /\b(td|td bank|rbc|royal bank|bmo|scotiabank|cibc|bank).{0,120}\b(account|card|online banking).{0,80}\b(suspended|locked|blocked|restricted|compromised|security alert)\b/,
+
+    /\b(bank|account|debit card|credit card).{0,120}\b(verify|confirm|reactivate|unlock).{0,80}\b(click|link|visit|login|sign in)\b/,
+
+    /\b(unusual activity|suspicious activity|unauthorized transaction|security alert).{0,120}\b(verify|confirm|click|login|sign in)\b/
+
+  ]
+
+},
+
 
 {
 
