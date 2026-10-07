@@ -326,7 +326,43 @@ function analyzeMessage() {
       ]
 
     },
+{
 
+  weight: 4,
+
+  tip: "Interac e-Transfer scam: Verify unexpected transfer or deposit notices through your bank's official app. Do not use links supplied in the message or enter banking credentials.",
+
+  patterns: [
+
+    /\b(interac|e-transfer|etransfer|money transfer).{0,120}\b(deposit|pending|waiting|claim|accept|refund|expired)\b/,
+
+    /\b(interac|e-transfer|etransfer).{0,120}\b(click|tap|link|verify|login|sign in|banking information)\b/,
+
+    /\b(refund|deposit|payment).{0,120}\b(interac|e-transfer|etransfer).{0,120}\b(click|link|claim|accept|verify)\b/
+
+  ]
+
+},
+
+{
+
+  weight: 4,
+
+  tip: "Job or recruitment scam: Verify unexpected job offers directly with the employer. Never pay upfront fees, deposit a cheque to buy equipment, or send money to a recruiter.",
+
+  patterns: [
+
+    /\b(job offer|employment offer|recruiter|hiring|work from home|remote job).{0,140}\b(pay fee|training fee|registration fee|equipment fee|send money|deposit)\b/,
+
+    /\b(job|employment|position|recruiter).{0,140}\b(cheque|check).{0,100}\b(equipment|computer|supplies|send money|e-transfer)\b/,
+
+    /\b(interview|recruiter|hiring manager|job offer).{0,120}\b(whatsapp|telegram|signal).{0,100}\b(job|position|employment|interview)\b/,
+
+    /\b(easy money|earn from home|work from home).{0,120}\b(no experience|daily pay|guaranteed income|quick money)\b/
+
+  ]
+
+},
     {
 
       weight: 4,
