@@ -363,7 +363,28 @@ function analyzeMessage() {
   ]
 
 },
-    {
+  {
+
+  weight: 4,
+
+  tip: "Marketplace scam: Be cautious when a buyer or seller asks for unusual payment arrangements, overpays, sends a courier, or asks you to refund money. Keep payment and communication on the marketplace platform whenever possible.",
+
+  patterns: [
+
+    /\b(facebook marketplace|marketplace|kijiji|craigslist|buyer|seller).{0,140}\b(overpay|overpayment|extra money|refund|send back)\b/,
+
+    /\b(buyer|seller).{0,140}\b(courier|shipping agent|pickup agent|someone will pick it up)\b/,
+
+    /\b(marketplace|kijiji|buyer|seller).{0,140}\b(e-transfer|etransfer|interac|payment).{0,100}\b(link|email|confirm|verify)\b/,
+
+    /\b(item|listing|purchase|sale).{0,140}\b(pay outside|outside the app|gift card|crypto|bitcoin)\b/
+
+  ]
+
+},
+
+  
+{
 
       weight: 4,
 
