@@ -535,15 +535,17 @@ function analyzeMessage() {
 
   weight: 4,
 
-  tip: "Tech support scam: Do not give unexpected callers remote access to your device. Contact the company directly using official contact information.",
+  tip: "Tech support scam: Do not give unexpected callers or messages remote access to your computer or phone. Never install remote-control software or provide passwords, PINs, or verification codes at their request.",
 
   patterns: [
 
-    /\b(microsoft|windows|apple|tech support).{0,100}\b(virus|infected|hacked|security alert)\b/,
+    /\b(microsoft|windows|apple|tech support|technical support|support team).{0,140}\b(virus|infected|malware|hacked|security alert|security problem|computer problem|account compromised)\b/,
 
-    /\b(anydesk|teamviewer|remote access|remote desktop)\b/,
+    /\b(remote access|remote support|remote connection).{0,120}\b(computer|phone|device|screen)\b/,
 
-    /\b(technician|support).{0,100}\b(download|install|remote access)\b/
+    /\b(anydesk|teamviewer|ultraviewer|screenconnect|logmein|remote desktop).{0,120}\b(install|download|open|run|connect|access)\b/,
+
+    /\b(support|technician|agent).{0,140}\b(password|pin|verification code|security code|banking information)\b/
 
   ]
 
