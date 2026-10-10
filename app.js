@@ -272,17 +272,28 @@ function analyzeMessage() {
 },
 {
 
+
   weight: 3,
 
-  tip: "Romance scam: Be cautious when someone you met online develops a relationship quickly and then asks for money, gift cards, cryptocurrency, or financial help.",
+  tip: "Romance scam: Be cautious when someone you meet online quickly develops romantic feelings, requests money, claims an emergency, or encourages cryptocurrency investments. Never send money to someone you have not independently verified.",
 
   patterns: [
 
-    /\b(love|relationship|romance|dating).{0,80}\b(send|need|help|loan|money|gift card|crypto)\b/,
+    /\b(love|relationship|romance|dating).{0,100}\b(send|need|help|loan|money|gift card|crypto)\b/i,
 
-    /\b(met online|online dating).{0,80}\b(money|financial help|emergency|gift card|crypto)\b/,
+    /\b(met online|online dating|dating app).{0,100}\b(money|financial help|emergency|gift card|crypto)\b/i,
 
-    /\b(love you|my love|sweetheart).{0,80}\b(send money|need money|financial help)\b/
+    /\b(love you|my love|sweetheart|darling).{0,100}\b(send money|need money|financial help|wire transfer)\b/i,
+
+    /\b(military|soldier|deployed|overseas).{0,120}\b(money|travel expenses|medical bills|emergency|transfer)\b/i,
+
+    /\b(hospital|medical emergency|accident|surgery).{0,100}\b(send money|help me|transfer|gift card)\b/i,
+
+    /\b(crypto|bitcoin|investment|trading platform).{0,100}\b(profit|guaranteed return|invest|deposit)\b/i,
+
+    /\b(whatsapp|telegram|signal).{0,100}\b(move our conversation|chat privately|leave the app|talk elsewhere)\b/i,
+
+    /\b(don't tell anyone|keep this secret|between us|trust me).{0,100}\b(money|payment|transfer|investment)\b/i
 
   ]
 
@@ -597,13 +608,55 @@ function analyzeMessage() {
 
   );
 
-  const messageScore = matches.reduce(
+  // Calculate the score from matching scam rules
 
-    (total, rule) => total + rule.weight,
+let messageScore = matches.reduce(
 
-    0
+  (total, rule) => total + rule.weight,
 
-  );
+  0
+
+);
+
+// Identify combinations of suspicious behaviour
+
+const asksForMoney =
+
+  /\b(send money|need money|transfer money|wire money|gift cards?|bitcoin|crypto|payment)\b/i.test(text);
+
+const demandsSecrecy =
+
+  /\b(don't tell anyone|keep this secret|between us|do not tell anyone)\b/i.test(text);
+
+const romanticManipulation =
+
+  /\b(love you|my love|sweetheart|romance|relationship|dating)\b/i.test(text);
+
+const createsEmergency =
+
+  /\b(emergency|hospital|accident|urgent|medical emergency)\b/i.test(text);
+
+// Increase risk when multiple warning signs appear together
+
+if (romanticManipulation && asksForMoney) {
+
+  messageScore += 3;
+
+}
+
+if (asksForMoney && demandsSecrecy) {
+
+  messageScore += 3;
+
+}
+
+if (romanticManipulation && createsEmergency && asksForMoney) {
+
+  messageScore += 2;
+
+}
+
+
 
   const samMessage = document.getElementById("sam-message");
 
