@@ -32,7 +32,7 @@ body {
 
   width: 100%;
 
-  max-width: 520px;
+  max-width: 1100px;
 
 }
 
@@ -258,9 +258,9 @@ button:hover {
 
   display: block;
 
-  width: 140px !important;
+  width: 400px !important;
 
-  max-width: 140px !important;
+  max-width: 90% !important;
 
   height: auto !important;
 
@@ -301,4 +301,138 @@ button:hover {
 
 
 
+
+/* SCAMCHECK LANDING PAGE REDESIGN */
+
+body {
+
+  background: linear-gradient(
+
+    135deg,
+
+    #071b30 0%,
+
+    #123b52 55%,
+
+    #087e83 100%
+
+  );
+
+  min-height: 100vh;
+
+}
+
+#welcome-screen {
+
+  width: 100%;
+
+  max-width: none;
+
+  text-align: center;
+
+}
+
+#welcome-screen .sam-mascot {
+
+  display: block;
+
+  width: min(520px, 90%) !important;
+
+  max-width: 90% !important;
+
+  height: auto !important;
+
+  margin: 20px auto 30px;
+
+  object-fit: contain;
+
+}
+
+#welcome-screen h1 {
+
+  font-size: clamp(36px, 5vw, 64px);
+
+}
+
+#welcome-screen .tagline {
+
+  font-size: clamp(16px, 2vw, 24px);
+
+}
+
+#welcome-screen button {
+
+  width: 100%;
+
+  max-width: 380px;
+
+  margin: 10px auto;
+
+}
+
+@media (max-width: 600px) {
+
+  #welcome-screen .sam-mascot {
+
+    width: 85% !important;
+
+    max-width: 85% !important;
+
+  }
+
+}
+
+/* WIDER LANDING PAGE */
+
+body:has(#welcome-screen:not(.hidden)) .app {
+
+  width: 100%;
+
+  max-width: 100%;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  background: transparent;
+
+  box-shadow: none;
+
+}
+
+#welcome-screen {
+
+  width: 100%;
+
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  background: transparent;
+
+}
+
+#welcome-screen h1,
+
+#welcome-screen h2 {
+
+  color: white;
+
+}
+
+#welcome-screen .tagline,
+
+#welcome-screen .intro {
+
+  color: #e0f5f3;
+
+}
+
+#welcome-screen .sam-mascot {
+
+  width: min(520px, 85%) !important;
+
+  max-width: 85% !important;
+
+}
 
